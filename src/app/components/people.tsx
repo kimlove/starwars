@@ -64,10 +64,17 @@ export const People = () => {
     return <div>Error fetching people</div>;
   }
 
+  // we want to extract '/people/1/' from the ful swapi URL: https://swapi.dev/api/people/1/
+  const extractPath = (url: string): string => {
+    const parts = url.split("/api");
+    return parts.length > 1 ? parts[1] : ""; // Return an empty string if "/api" is not found
+  };
+
+  // get the correct link depending on the column type
   const getLink = (columnKey: keyof Person, person: Person): string => {
-    if (columnKey === "name") return person.url;
+    if (columnKey === "name") return extractPath(person.url);
     const value = person[columnKey];
-    return typeof value === "string" ? value : "#"; // Fallback to "#" for arrays or invalid values
+    return typeof value === "string" ? extractPath(value) : "#"; // Fallback to "#" for arrays or invalid values
   };
 
   const cellPadding = "p-2 px-4";
