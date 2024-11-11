@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
+import { Button } from "@/app/components/ui/button";
 import { Person, PeopleData } from "@/types/apiData";
 
 export const People = () => {
@@ -159,20 +160,21 @@ export const People = () => {
             Current page: <strong>{page}</strong>
           </p>
           <div className="flex gap-2">
-            <button
-              onClick={() => updatePageHandler(page - 1)}
-              className="border border-gray-300 rounded-md px-2 py-1 disabled:opacity-50"
-              disabled={!people.previous}
+            <Button
+              onClick={() => {
+                if (page > 1) updatePageHandler(page - 1);
+              }}
+              disabled={!people.previous || status === "loading"}
             >
               Previous
-            </button>
-            <button
+            </Button>
+
+            <Button
               onClick={() => updatePageHandler(page + 1)}
-              className="border border-gray-300 rounded-md px-2 py-1 disabled:opacity-50"
-              disabled={!people.next}
+              disabled={!people.next || status === "loading"}
             >
               Next
-            </button>
+            </Button>
           </div>
         </>
       ) : null}
