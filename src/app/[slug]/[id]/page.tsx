@@ -5,17 +5,15 @@ export default async function DashboardPage({ params }: any) {
   const id = params.id;
 
   return (
-    <div className="">
-      <main className="">
-        <ul>
-          <li>slug: {slug}</li>
-          <li>id: {id}</li>
-        </ul>
+    <div>
+      <ul>
+        <li>slug: {slug}</li>
+        <li>id: {id}</li>
+      </ul>
 
-        <p className="my-4">
-          <Link href="/">Back to homepage</Link>
-        </p>
-      </main>
+      <p className="my-4">
+        <Link href="/">Back to homepage</Link>
+      </p>
     </div>
   );
 }

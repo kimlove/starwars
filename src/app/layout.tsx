@@ -17,7 +17,7 @@ export default function RootLayout({
         <header className="p-4">
           <h1 className="text-center">Star Wars!</h1>
         </header>
-        {children}
+        <main className="max-w-6xl mx-auto">{children}</main>
       </body>
     </html>
   );
