@@ -38,6 +38,14 @@ export const People = () => {
     fetchPeople();
   }, []);
 
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+
+  if (status === "error") {
+    return <div>Error fetching people</div>;
+  }
+
   if (status === "idle" && people) {
     return (
       <div>
