@@ -128,14 +128,14 @@ export const ViewDetail = ({ slug, id }: ViewDetailProps) => {
         </div>
       ) : null}
 
-      <p className="mt-12 text-center">
+      <div className="mt-12 mb-4 text-center">
         <Link
           href="/"
           className="w-full p-4 px-20 bg-black/70 border-2 border-yellow-400 text-yellow-400 font-bold rounded-full hover:bg-yellow-400 hover:text-black"
         >
-          Back to homepage
+          Back to Homepage
         </Link>
-      </p>
+      </div>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Inter } from "next/font/google";
 
 import { ReactQueryProvider } from "@/app/providers/react-query-provider";
 import "./globals.css";
@@ -11,14 +12,19 @@ export const metadata: Metadata = {
   description: "A tech test by Kim Love",
 };
 
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`antialiased`}>
+    <html lang="en" className={inter.className}>
+      <body className={`antialiased pb-8`}>
         <div>
           <img
             src="/space-bg.webp"
