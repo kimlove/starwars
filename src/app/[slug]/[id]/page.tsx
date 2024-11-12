@@ -2,7 +2,7 @@ import { ViewDetail } from "@/app/components/view-detail";
 
 interface DetailProps {
   params: {
-    slug: string;
+    slug: "people" | "planets" | "films" | "species";
     id: string;
   };
 }
