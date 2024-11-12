@@ -41,7 +41,7 @@ export const ViewDetail = ({ slug, id }: ViewDetailProps) => {
   }
 
   return (
-    <div className="mt-4 max-w-6xl mx-auto">
+    <div className="mt-2 max-w-6xl mx-auto">
       <h1 className="text-lg font-bold mb-8 uppercase border-2 border-yellow-400 text-yellow-400 p-4 bg-black/70 shadow-lg backdrop-blur-lg rounded-full text-center">
         Star Wars: {slug}
       </h1>
@@ -129,8 +129,11 @@ export const ViewDetail = ({ slug, id }: ViewDetailProps) => {
         </div>
       </div>
 
-      <p className="mt-8 text-center">
-        <Link href="/" className="text-blue-600 hover:underline">
+      <p className="mt-12 text-center">
+        <Link
+          href="/"
+          className="w-full p-4 px-20 bg-black/70 border-2 border-yellow-400 text-yellow-400 font-bold rounded-full hover:bg-yellow-400 hover:text-black"
+        >
           Back to homepage
         </Link>
       </p>
