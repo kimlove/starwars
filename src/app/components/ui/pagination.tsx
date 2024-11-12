@@ -34,7 +34,7 @@ export const Pagination = ({
       </Button>
 
       {totalPages > 0 ? (
-        <p className="bg-black/70 p-1 px-4 rounded-full shadow-xl">
+        <p className="bg-black/70 p-1 px-4 rounded-full shadow-xl fade-in">
           {isLoading ? (
             <>Loading...</>
           ) : (
