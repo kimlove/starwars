@@ -3,12 +3,14 @@
 import Link from "next/link";
 import { useSwapi } from "@/app/hooks/useSwapi";
 
+import { extractPath } from "@/lib/url-helpers";
+
 interface ViewDetailProps {
   slug: string;
   id: string;
 }
 
-const validSlugs = ["people", "planets", "films", "species"];
+const validSlugs = ["people", "planets", "films", "species", "starships"];
 
 export const ViewDetail = ({ slug, id }: ViewDetailProps) => {
   if (!validSlugs.includes(slug)) {
@@ -39,8 +41,8 @@ export const ViewDetail = ({ slug, id }: ViewDetailProps) => {
   }
 
   return (
-    <div className="p-8 max-w-4xl mx-auto">
-      <h1 className="text-lg font-bold mb-8 uppercase border-2 border-yellow-400 text-yellow-400 p-2 rounded-xl text-center text-black">
+    <div className="p-8 max-w-6xl mx-auto">
+      <h1 className="text-lg font-bold mb-8 uppercase border-2 border-yellow-400 text-yellow-400 p-2 rounded-xl text-center">
         Star Wars: {slug}
       </h1>
 
@@ -58,7 +60,14 @@ export const ViewDetail = ({ slug, id }: ViewDetailProps) => {
             {data &&
               Object.entries(data).map(([key, value]) => {
                 // skip any fields we're not interested in currently
-                if (key === "url" || key === "created" || key === "edited") {
+                if (
+                  key === "url" ||
+                  key === "created" ||
+                  key === "edited" ||
+                  key === "starships" ||
+                  key === "characters" ||
+                  key === "vehicles"
+                ) {
                   return;
                 }
 
@@ -67,17 +76,38 @@ export const ViewDetail = ({ slug, id }: ViewDetailProps) => {
                   return;
 
                 return (
-                  <li key={key} className="flex gap-4">
-                    <strong className="w-32 capitalize">
+                  <li
+                    key={key}
+                    className="grid grid-cols-1 lg:grid-cols-[1fr_3fr] text-sm"
+                  >
+                    <strong className="w-32 capitalize whitespace-nowrap">
                       {key.replace("_", " ")}:
                     </strong>
 
-                    {(key === "films" || key === "residents") &&
+                    {(key === "films" ||
+                      key === "residents" ||
+                      key === "people" ||
+                      key === "planets" ||
+                      key === "species") &&
                     value &&
                     Array.isArray(value) ? (
-                      <ul>
-                        {value.map((film: any) => (
-                          <li key={film}>{film}</li>
+                      <ul className="w-auto">
+                        {value.map((item: string) => (
+                          <li key={item}>
+                            {
+                              <>
+                                <span className="text-xs uppercase pr-2">
+                                  View:
+                                </span>
+                                <Link
+                                  href={extractPath(item)}
+                                  className="font-bold underline hover:no-underline"
+                                >
+                                  {extractPath(item)}
+                                </Link>
+                              </>
+                            }
+                          </li>
                         ))}
                       </ul>
                     ) : (
