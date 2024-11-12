@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-import { Button } from "@/app/components/ui/button";
+import { Pagination } from "@/app/components/ui/pagination";
+
 import { Person, PeopleData } from "@/types/apiData";
 
 export const People = () => {
@@ -115,6 +116,16 @@ export const People = () => {
 
       {people && people.results.length >= 1 ? (
         <>
+          <Pagination
+            count={people.count}
+            itemsPerPage={itemsPerPage}
+            next={people.next}
+            page={page}
+            previous={people.previous}
+            status={status}
+            updatePageHandler={updatePageHandler}
+          />
+
           <table
             className={`bg-gray-900 w-full${
               status === "loading" ? " opacity-30" : ""
@@ -157,31 +168,6 @@ export const People = () => {
               })}
             </tbody>
           </table>
-
-          <div className="my-4 w-full flex justify-between items-center gap-2">
-            <Button
-              onClick={() => {
-                if (page > 1) updatePageHandler(page - 1);
-              }}
-              disabled={!people.previous || status === "loading"}
-            >
-              Previous
-            </Button>
-
-            <p className="my-4">
-              Page:{" "}
-              <strong>
-                {page} / {Math.ceil(people.count / itemsPerPage)}
-              </strong>
-            </p>
-
-            <Button
-              onClick={() => updatePageHandler(page + 1)}
-              disabled={!people.next || status === "loading"}
-            >
-              Next
-            </Button>
-          </div>
         </>
       ) : null}
     </div>
