@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 import { useSwapi } from "@/app/hooks/useSwapi";
@@ -15,8 +15,22 @@ import { Person } from "@/types/apiData";
 export const People = () => {
   const [page, setPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
+  const [debouncedSearchQuery, setDebouncedSearchQuery] = useState("");
 
-  const { data, error, isLoading } = useSwapi("people", page, searchQuery);
+  const { data, error, isLoading } = useSwapi(
+    "people",
+    page,
+    debouncedSearchQuery
+  );
+
+  // Debounce the search query -- useEffect not always ideal, but fine for this use case
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearchQuery(searchQuery);
+    }, 250);
+
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
 
   if (error) {
     return (
