@@ -41,18 +41,22 @@ export const People = () => {
   const columns: {
     label: string;
     key: keyof Person;
+    width?: string;
     align?: string;
     isLink?: boolean;
   }[] = [
-    { label: "Name", key: "name", isLink: true, align: "text-left" },
-    { label: "Height", key: "height" },
-    { label: "Mass", key: "mass" },
-    // { label: "Hair Color", key: "hair_color" },
-    // { label: "Skin Colour", key: "skin_color" },
-    // { label: "Eye Colour", key: "eye_color" },
-    { label: "Birth Year", key: "birth_year" },
-    { label: "Gender", key: "gender" },
-    { label: "Homeworld", key: "homeworld", isLink: true },
+    {
+      label: "Name",
+      key: "name",
+      width: "w-64",
+      isLink: true,
+      align: "text-left",
+    },
+    { label: "Height", key: "height", width: "w-40" },
+    { label: "Mass", key: "mass", width: "w-40" },
+    { label: "Birth Year", key: "birth_year", width: "w-40" },
+    { label: "Gender", key: "gender", width: "w-40" },
+    { label: "Homeworld", key: "homeworld", isLink: true, width: "w-40" },
   ];
 
   return (
@@ -77,18 +81,18 @@ export const People = () => {
       {data && data.results.length >= 1 ? (
         <>
           <table
-            className={`bg-black/70 backdrop-blur-lg shadow-xl rounded-xl overflow-hidden w-full${
+            className={`bg-black/70 backdrop-blur-lg shadow-xl rounded-xl overflow-hidden w-full fade-in${
               isLoading ? " opacity-30" : ""
             }`}
           >
             <thead>
-              <tr className="bg-white/5">
+              <tr className="bg-white/5 text-xs uppercase">
                 {columns.map((column, index) => (
                   <th
                     key={index}
                     className={`${cellPadding} ${
-                      column.align ? column.align : "text-right"
-                    }`}
+                      column.width ? column.width : "w-auto"
+                    } ${column.align ? column.align : "text-right"}`}
                   >
                     {column.label}
                   </th>
