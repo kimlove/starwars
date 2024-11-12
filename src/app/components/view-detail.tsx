@@ -50,6 +50,9 @@ export const ViewDetail = ({ slug, id }: ViewDetailProps) => {
               src={imageUrl}
               alt="Star Wars Image"
               className="w-full object-contain"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = "/image-not-found.webp";
+              }}
             />
           </div>
 
