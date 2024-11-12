@@ -6,7 +6,7 @@ import { useSwapi } from "@/app/hooks/useSwapi";
 import { extractPath } from "@/lib/url-helpers";
 
 interface ViewDetailProps {
-  slug: string;
+  slug: "people" | "planets" | "films" | "species";
   id: string;
 }
 
@@ -41,22 +41,22 @@ export const ViewDetail = ({ slug, id }: ViewDetailProps) => {
   }
 
   return (
-    <div className="p-8 max-w-6xl mx-auto">
-      <h1 className="text-lg font-bold mb-8 uppercase border-2 border-yellow-400 text-yellow-400 p-2 rounded-xl text-center">
+    <div className="mt-4 max-w-6xl mx-auto">
+      <h1 className="text-lg font-bold mb-8 uppercase border-2 border-yellow-400 text-yellow-400 p-4 bg-black/70 shadow-lg backdrop-blur-lg rounded-full text-center">
         Star Wars: {slug}
       </h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-        <div className="flex justify-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="flex justify-center bg-black rounded-xl overflow-hidden self-start">
           <img
             src={imageUrl}
             alt="Star Wars Image"
-            className="rounded-lg w-full object-cover"
+            className="w-full object-contain"
           />
         </div>
 
-        <div>
-          <ul className="space-y-2">
+        <div className="p-4 bg-black/70 backdrop-blur-lg rounded-xl">
+          <ul className="space-y-4">
             {data &&
               Object.entries(data).map(([key, value]) => {
                 // skip any fields we're not interested in currently
@@ -78,7 +78,7 @@ export const ViewDetail = ({ slug, id }: ViewDetailProps) => {
                 return (
                   <li
                     key={key}
-                    className="grid grid-cols-1 lg:grid-cols-[1fr_3fr] text-sm"
+                    className="grid grid-cols-1 lg:grid-cols-[1fr_3fr]"
                   >
                     <strong className="w-32 capitalize whitespace-nowrap">
                       {key.replace("_", " ")}:
