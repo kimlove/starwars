@@ -67,12 +67,19 @@ export const People = () => {
           />
 
           <table
-            className={`bg-gray-900 w-full${isLoading ? " opacity-30" : ""}`}
+            className={`bg-black/70 backdrop-blur-lg rounded-xl overflow-hidden w-full${
+              isLoading ? " opacity-30" : ""
+            }`}
           >
             <thead>
-              <tr className="bg-slate-700">
+              <tr className="bg-white/5">
                 {columns.map((column, index) => (
-                  <th key={index} className={`${cellPadding} text-left`}>
+                  <th
+                    key={index}
+                    className={`${cellPadding} ${
+                      column.align ? column.align : "text-right"
+                    }`}
+                  >
                     {column.label}
                   </th>
                 ))}
