@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+
 import { ReactQueryProvider } from "@/app/providers/react-query-provider";
 import "./globals.css";
 
@@ -18,7 +20,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`antialiased`}>
         <header className=" flex justify-center p-4">
-          <Logo />
+          <Link href="/" className="transition-transform hover:scale-105">
+            <Logo />
+          </Link>
         </header>
 
         <ReactQueryProvider>
