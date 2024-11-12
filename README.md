@@ -42,12 +42,15 @@ The production build of the task should be available at [http://localhost:3000/]
 
 ## Known Issues / Future Improvements
 
-- **Loading Spinner**: A branded loading spinner would enhance user experience during API requests. _(todo)_
+✅ = Added after initial task submission
+
+- ✅ **Loading Spinner**: A branded loading spinner would enhance user experience during API requests.
+- ✅ **Debounced Search Input**: Implement a debounce on the search input so the query fires only after a short delay in typing, reducing unnecessary API calls.
+- ✅ **Fallback Image**: Add a fallback image for the view detail page if image unavailable.
+- **Animated Page Transitions**: Add smooth animated transitions between pages.
 - **Navigation Improvements**: Enable navigation to the next or previous character from the detail view page to avoid returning to the homepage for each selection.
 - **Image Handling**: Some images are missing on [Star Wars Visual Guide](https://starwars-visualguide.com/). Improved handling of 404 errors would prevent broken image displays.
-- **Debounced Search Input**: Implement a debounce on the search input so the query fires only after a short delay in typing, reducing unnecessary API calls.
 - **Additional Tests**: Some additional unit and integration tests would be beneficial.
 - **Improved Linked Detail Display**: Some linked details (e.g., `/films/4/`) aren’t user-friendly and would be better represented with names (e.g., "The Phantom Menace"). Ideally, the API would return a name alongside the link, to avoid additional lookups.
 - **Additional Data Display**: Easily extendable to include more data types (e.g., ships, vehicles) using the existing routing setup, though currently out of scope.
-- **Animated Page Transitions**: Add smooth animated transitions between pages.
 - **Optional Background Music**: Add optional Star Wars-themed background MIDI music to get into the Star Wars mood 😊
