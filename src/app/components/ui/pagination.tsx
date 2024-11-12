@@ -6,7 +6,7 @@ interface PaginationProps {
   next: string | null;
   page: number;
   previous: string | null;
-  status: string;
+  isLoading: boolean;
   updatePageHandler: (page: number) => void;
 }
 
@@ -16,7 +16,7 @@ export const Pagination = ({
   next,
   page,
   previous,
-  status,
+  isLoading,
   updatePageHandler,
 }: PaginationProps) => {
   const totalPages = Math.ceil(count / itemsPerPage);
@@ -25,10 +25,10 @@ export const Pagination = ({
     <div className="my-4 w-full flex justify-between items-center gap-2">
       <Button
         onClick={() => {
-          if (page > 1 && status === "idle") updatePageHandler(page - 1);
+          if (page > 1 && !isLoading) updatePageHandler(page - 1);
         }}
         disabled={!previous}
-        loading={status === "loading"}
+        loading={isLoading}
       >
         Previous
       </Button>
@@ -42,10 +42,10 @@ export const Pagination = ({
 
       <Button
         onClick={() => {
-          if (status === "idle") updatePageHandler(page + 1);
+          if (!isLoading) updatePageHandler(page + 1);
         }}
         disabled={!next}
-        loading={status === "loading"}
+        loading={isLoading}
       >
         Next
       </Button>

@@ -63,7 +63,7 @@ describe("Pagination Component", () => {
   });
 
   test("does not call updatePageHandler when status is 'loading'", () => {
-    render(<Pagination {...defaultProps} status="loading" />);
+    render(<Pagination {...defaultProps} isLoading />);
     const nextButton = screen.getByRole("button", { name: /next/i });
     const prevButton = screen.getByRole("button", { name: /previous/i });
 

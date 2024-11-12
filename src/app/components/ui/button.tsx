@@ -1,7 +1,7 @@
 interface ButtonProps {
   children: React.ReactNode;
   onClick: () => void;
-  loading?: boolean;
+  loading: boolean;
   disabled?: boolean;
 }
 
@@ -13,11 +13,12 @@ export const Button = ({
 }: ButtonProps) => {
   return (
     <button
-      className={`border border-gray-300 rounded-md px-2 py-1  ${
+      className={`border border-gray-300 rounded-md px-2 py-1${
         loading
           ? " opacity-50 cursor-progress"
           : " disabled:opacity-50 disabled:cursor-not-allowed"
       }`}
+      type="button" // hardcode to button as we won't need any submit buttons
       onClick={onClick}
       disabled={disabled}
     >

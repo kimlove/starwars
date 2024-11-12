@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ReactQueryProvider } from "@/app/providers/react-query-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -17,7 +18,10 @@ export default function RootLayout({
         <header className="p-4">
           <h1 className="text-center">Star Wars!</h1>
         </header>
-        <main className="max-w-6xl mx-auto">{children}</main>
+
+        <ReactQueryProvider>
+          <main className="max-w-6xl mx-auto">{children}</main>
+        </ReactQueryProvider>
       </body>
     </html>
   );
