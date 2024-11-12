@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import { useSwapi } from "@/app/hooks/useSwapi";
 
+import { SearchInput } from "@/app/components/ui/search-input";
 import { Pagination } from "@/app/components/ui/pagination";
 import { getLink } from "@/lib/url-helpers";
 import { Person } from "@/types/apiData";
@@ -48,15 +49,10 @@ export const People = () => {
 
   return (
     <div>
-      <div className="my-4">
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={(e) => searchQueryQueryHandler(e.target.value)}
-          placeholder="SearchQuery"
-          className="border border-gray-300 rounded-md px-2 py-1"
-        />
-      </div>
+      <SearchInput
+        searchQuery={searchQuery}
+        searchQueryQueryHandler={searchQueryQueryHandler}
+      />
 
       {data && data.results.length >= 1 ? (
         <>
