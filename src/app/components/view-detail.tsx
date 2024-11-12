@@ -48,11 +48,12 @@ export const ViewDetail = ({ slug, id }: ViewDetailProps) => {
           <div className="flex justify-center bg-black rounded-xl overflow-hidden self-start">
             <img
               src={imageUrl}
-              alt="Star Wars Image"
+              alt={data?.name || "Star Wars Image"}
               className="w-full object-contain"
               onError={(e) => {
                 (e.target as HTMLImageElement).src = "/image-not-found.webp";
               }}
+              fetchPriority="high"
             />
           </div>
 

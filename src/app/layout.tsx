@@ -30,6 +30,7 @@ export default function RootLayout({
             src="/space-bg.webp"
             className="fixed top-0 left-0 w-full h-full object-cover z-0"
             alt=""
+            loading="lazy"
           />
         </div>
 
