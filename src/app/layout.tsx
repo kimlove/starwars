@@ -19,15 +19,24 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased`}>
-        <header className=" flex justify-center p-4">
-          <Link href="/" className="transition-transform hover:scale-105">
-            <Logo />
-          </Link>
-        </header>
+        <div>
+          <img
+            src="/space-bg.webp"
+            className="fixed top-0 left-0 w-full h-full object-cover z-0"
+          />
+        </div>
 
-        <ReactQueryProvider>
-          <main className="max-w-6xl mx-auto">{children}</main>
-        </ReactQueryProvider>
+        <div className="relative">
+          <header className=" flex justify-center p-4">
+            <Link href="/" className="transition-transform hover:scale-105">
+              <Logo />
+            </Link>
+          </header>
+
+          <ReactQueryProvider>
+            <main className="max-w-6xl mx-auto px-4">{children}</main>
+          </ReactQueryProvider>
+        </div>
       </body>
     </html>
   );
