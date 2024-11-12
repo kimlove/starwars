@@ -21,7 +21,7 @@ const fetchSwapiData = async (
 };
 
 export const useSwapi = (
-  type: "people" | "planets",
+  type: "people" | "planets" | "films" | "species",
   page?: number,
   searchQuery?: string,
   id?: number
