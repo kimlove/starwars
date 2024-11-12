@@ -7,6 +7,7 @@ import { useSwapi } from "@/app/hooks/useSwapi";
 
 import { SearchInput } from "@/app/components/ui/search-input";
 import { Pagination } from "@/app/components/ui/pagination";
+import { Error } from "@/app/components/error";
 import { Loading } from "@/app/components/loading";
 import { getLink } from "@/lib/url-helpers";
 import { Person } from "@/types/apiData";
@@ -17,7 +18,13 @@ export const People = () => {
 
   const { data, error, isLoading } = useSwapi("people", page, searchQuery);
 
-  if (error) return <div>Error: {error.message}</div>;
+  if (error) {
+    return (
+      <div>
+        <Error />
+      </div>
+    );
+  }
 
   const updatePageHandler = (newPage: number) => {
     setPage(newPage);

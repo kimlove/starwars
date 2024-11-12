@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useSwapi } from "@/app/hooks/useSwapi";
 import { extractPath } from "@/lib/url-helpers";
+import { Error } from "@/app/components/error";
 import { Loading } from "@/app/components/loading";
 
 interface ViewDetailProps {
@@ -21,8 +22,6 @@ export const ViewDetail = ({ slug, id }: ViewDetailProps) => {
 
   const { data, error, isLoading } = useSwapi(slug, 0, undefined, numericId);
 
-  if (error) return <p>Error loading details</p>;
-
   // for some reason "people" images need the characters slug
   let imageUrl = `https://starwars-visualguide.com/assets/img/${
     slug === "people" ? "characters" : slug
@@ -40,9 +39,11 @@ export const ViewDetail = ({ slug, id }: ViewDetailProps) => {
         Star Wars: {slug}
       </h1>
 
-      {isLoading ? (
-        <Loading />
-      ) : (
+      {error ? <Error /> : null}
+
+      {isLoading ? <Loading /> : null}
+
+      {!error && !isLoading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 fade-in">
           <div className="flex justify-center bg-black rounded-xl overflow-hidden self-start">
             <img
@@ -125,7 +126,7 @@ export const ViewDetail = ({ slug, id }: ViewDetailProps) => {
             </ul>
           </div>
         </div>
-      )}
+      ) : null}
 
       <p className="mt-12 text-center">
         <Link
