@@ -78,6 +78,8 @@ export const People = () => {
     return typeof value === "string" ? extractPath(value) : "#"; // Fallback to "#" for arrays or invalid values
   };
 
+  const itemsPerPage = 10;
+
   const cellPadding = "p-2 px-4";
 
   const columns: {
@@ -156,10 +158,7 @@ export const People = () => {
             </tbody>
           </table>
 
-          <p className="my-4">
-            Current page: <strong>{page}</strong>
-          </p>
-          <div className="flex gap-2">
+          <div className="my-4 w-full flex justify-between items-center gap-2">
             <Button
               onClick={() => {
                 if (page > 1) updatePageHandler(page - 1);
@@ -168,6 +167,13 @@ export const People = () => {
             >
               Previous
             </Button>
+
+            <p className="my-4">
+              Page:{" "}
+              <strong>
+                {page} / {Math.ceil(people.count / itemsPerPage)}
+              </strong>
+            </p>
 
             <Button
               onClick={() => updatePageHandler(page + 1)}
