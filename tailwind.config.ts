@@ -11,6 +11,9 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        yellow: {
+          400: "#ffe81f", // replace 400 with star wars yellow
+        },
       },
     },
   },

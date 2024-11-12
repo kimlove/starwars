@@ -14,7 +14,7 @@ export const SearchInput = ({
         value={searchQuery}
         onChange={(e) => searchQueryQueryHandler(e.target.value)}
         placeholder="Search for Star Wars characters!"
-        className="w-full p-4 px-6 border text-black rounded-full border-none text-xl"
+        className="w-full p-4 px-6 border-2 border-yellow-400 text-yellow-400 bg-black/70 backdrop-blur-lg rounded-full shadow-xl text-xl"
       />
     </div>
   );
