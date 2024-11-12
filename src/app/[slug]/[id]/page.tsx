@@ -1,19 +1,14 @@
-import Link from "next/link";
+import { ViewDetail } from "@/app/components/view-detail";
 
-export default async function DashboardPage({ params }: any) {
-  const slug = params.slug;
-  const id = params.id;
+interface DetailProps {
+  params: {
+    slug: string;
+    id: string;
+  };
+}
 
-  return (
-    <div>
-      <ul>
-        <li>slug: {slug}</li>
-        <li>id: {id}</li>
-      </ul>
+export default function Detail({ params }: DetailProps) {
+  const { slug, id } = params;
 
-      <p className="my-4">
-        <Link href="/">Back to homepage</Link>
-      </p>
-    </div>
-  );
+  return <ViewDetail slug={slug} id={id} />;
 }
