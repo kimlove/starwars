@@ -8,7 +8,7 @@ export const SearchInput = ({
   searchQueryQueryHandler,
 }: SearchInputProps) => {
   return (
-    <div className="my-4">
+    <div className="my-2">
       <input
         type="text"
         value={searchQuery}

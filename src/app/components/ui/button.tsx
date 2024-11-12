@@ -13,10 +13,10 @@ export const Button = ({
 }: ButtonProps) => {
   return (
     <button
-      className={`border border-gray-300 rounded-md px-2 py-1${
+      className={`p-1 px-4 bg-black/70 border-2 border-yellow-400 text-yellow-400 font-bold text-sm rounded-full ${
         loading
           ? " opacity-50 cursor-progress"
-          : " hover:bg-white hover:text-black disabled:opacity-50 disabled:cursor-not-allowed"
+          : " hover:bg-yellow-400 hover:text-black disabled:opacity-50 disabled:cursor-not-allowed"
       }`}
       type="button" // hardcode to button as we won't need any submit buttons
       onClick={onClick}
