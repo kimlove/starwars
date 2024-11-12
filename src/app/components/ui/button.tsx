@@ -13,7 +13,7 @@ export const Button = ({
 }: ButtonProps) => {
   return (
     <button
-      className={`p-1 px-4 bg-black/70 border-2 border-yellow-400 text-yellow-400 font-bold text-sm rounded-full ${
+      className={`p-1 px-4 bg-black/70 border-2 border-yellow-400 text-yellow-400 font-bold text-sm rounded-full shadow-xl ${
         loading
           ? " opacity-50 cursor-progress"
           : " hover:bg-yellow-400 hover:text-black disabled:opacity-50 disabled:cursor-not-allowed"

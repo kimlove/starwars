@@ -22,7 +22,7 @@ export const Pagination = ({
   const totalPages = Math.ceil(count / itemsPerPage);
 
   return (
-    <div className="my-2 w-full flex justify-between items-center gap-2">
+    <div className="my-6 w-full flex justify-between items-center gap-2">
       <Button
         onClick={() => {
           if (page > 1 && !isLoading) updatePageHandler(page - 1);
@@ -33,12 +33,20 @@ export const Pagination = ({
         Previous
       </Button>
 
-      <p className="bg-black/70 p-1 px-4 rounded-full shadow-xl my-4">
-        Page:{" "}
-        <strong>
-          {page} / {totalPages}
-        </strong>
-      </p>
+      {totalPages > 0 ? (
+        <p className="bg-black/70 p-1 px-4 rounded-full shadow-xl">
+          {isLoading ? (
+            <>Loading...</>
+          ) : (
+            <>
+              Page:{" "}
+              <strong>
+                {page} / {totalPages}
+              </strong>
+            </>
+          )}
+        </p>
+      ) : null}
 
       <Button
         onClick={() => {

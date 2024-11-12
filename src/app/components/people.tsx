@@ -7,6 +7,7 @@ import { useSwapi } from "@/app/hooks/useSwapi";
 
 import { SearchInput } from "@/app/components/ui/search-input";
 import { Pagination } from "@/app/components/ui/pagination";
+import { Loading } from "@/app/components/loading";
 import { getLink } from "@/lib/url-helpers";
 import { Person } from "@/types/apiData";
 
@@ -54,20 +55,22 @@ export const People = () => {
         searchQueryQueryHandler={searchQueryQueryHandler}
       />
 
+      <Pagination
+        count={data?.count}
+        itemsPerPage={itemsPerPage}
+        next={data?.next}
+        page={page}
+        previous={data?.previous}
+        isLoading={isLoading}
+        updatePageHandler={updatePageHandler}
+      />
+
+      {isLoading ? <Loading /> : null}
+
       {data && data.results.length >= 1 ? (
         <>
-          <Pagination
-            count={data.count}
-            itemsPerPage={itemsPerPage}
-            next={data.next}
-            page={page}
-            previous={data.previous}
-            isLoading={isLoading}
-            updatePageHandler={updatePageHandler}
-          />
-
           <table
-            className={`bg-black/70 backdrop-blur-lg rounded-xl overflow-hidden w-full${
+            className={`bg-black/70 backdrop-blur-lg shadow-xl rounded-xl overflow-hidden w-full${
               isLoading ? " opacity-30" : ""
             }`}
           >
