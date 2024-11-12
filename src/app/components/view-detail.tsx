@@ -10,7 +10,7 @@ interface ViewDetailProps {
   id: string;
 }
 
-const validSlugs = ["people", "planets", "films", "species", "starships"];
+const validSlugs = ["people", "planets", "films", "species"];
 
 export const ViewDetail = ({ slug, id }: ViewDetailProps) => {
   if (!validSlugs.includes(slug)) {
@@ -110,8 +110,17 @@ export const ViewDetail = ({ slug, id }: ViewDetailProps) => {
                           </li>
                         ))}
                       </ul>
+                    ) : key === "homeworld" ? (
+                      <span>
+                        <Link
+                          href={extractPath(value as string)}
+                          className="font-bold underline hover:no-underline"
+                        >
+                          View Planet
+                        </Link>
+                      </span>
                     ) : (
-                      <span>{String(value)}</span>
+                      <span className="capitalize">{String(value)}</span>
                     )}
                   </li>
                 );
