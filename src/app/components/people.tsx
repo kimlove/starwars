@@ -58,6 +58,7 @@ export const People = () => {
     width?: string;
     align?: string;
     isLink?: boolean;
+    mobile: boolean;
   }[] = [
     {
       label: "Name",
@@ -65,12 +66,19 @@ export const People = () => {
       width: "w-64",
       isLink: true,
       align: "text-left",
+      mobile: true,
     },
-    { label: "Height", key: "height", width: "w-40" },
-    { label: "Mass", key: "mass", width: "w-40" },
-    { label: "Birth Year", key: "birth_year", width: "w-40" },
-    { label: "Gender", key: "gender", width: "w-40" },
-    { label: "Homeworld", key: "homeworld", isLink: true, width: "w-40" },
+    { label: "Height", key: "height", width: "w-40", mobile: false },
+    { label: "Mass", key: "mass", width: "w-40", mobile: false },
+    { label: "Birth Year", key: "birth_year", width: "w-40", mobile: false },
+    { label: "Gender", key: "gender", width: "w-40", mobile: false },
+    {
+      label: "Homeworld",
+      key: "homeworld",
+      isLink: true,
+      width: "w-40",
+      mobile: true,
+    },
   ];
 
   return (
@@ -104,9 +112,10 @@ export const People = () => {
                 {columns.map((column, index) => (
                   <th
                     key={index}
-                    className={`${cellPadding} ${
-                      column.width ? column.width : "w-auto"
-                    } ${column.align ? column.align : "text-right"}`}
+                    className={`${cellPadding} 
+                    ${column.width ? column.width : "w-auto"} ${
+                      column.align ? column.align : "text-right"
+                    } ${column.mobile ? "table-cell" : "hidden md:table-cell"}`}
                   >
                     {column.label}
                   </th>
@@ -122,6 +131,8 @@ export const People = () => {
                         key={column.key}
                         className={`${cellPadding} ${
                           column.align ? column.align : "text-right"
+                        }  ${
+                          column.mobile ? "table-cell" : "hidden md:table-cell"
                         }`}
                       >
                         {column.isLink ? (

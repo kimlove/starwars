@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Inter } from "next/font/google";
+import { Share } from "@/app/components/share";
 
 import { ReactQueryProvider } from "@/app/providers/react-query-provider";
 import "./globals.css";
@@ -44,6 +45,8 @@ export default function RootLayout({
           <ReactQueryProvider>
             <main className="max-w-6xl mx-auto px-4">{children}</main>
           </ReactQueryProvider>
+
+          <Share />
         </div>
       </body>
     </html>

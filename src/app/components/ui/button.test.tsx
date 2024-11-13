@@ -5,13 +5,21 @@ import { Button } from "./button";
 
 describe("Button Component", () => {
   test("renders children correctly", () => {
-    render(<Button onClick={() => {}}>Click Me</Button>);
+    render(
+      <Button onClick={() => {}} loading={false}>
+        Click Me
+      </Button>
+    );
     expect(screen.getByRole("button")).toHaveTextContent("Click Me");
   });
 
   test("calls onClick handler when clicked and not disabled", () => {
     const handleClick = jest.fn();
-    render(<Button onClick={handleClick}>Click Me</Button>);
+    render(
+      <Button onClick={handleClick} loading={false}>
+        Click Me
+      </Button>
+    );
 
     const button = screen.getByRole("button");
     fireEvent.click(button);
@@ -22,7 +30,7 @@ describe("Button Component", () => {
   test("does not call onClick handler when disabled", () => {
     const handleClick = jest.fn();
     render(
-      <Button onClick={handleClick} disabled>
+      <Button onClick={handleClick} loading={false} disabled>
         Click Me
       </Button>
     );
@@ -35,7 +43,7 @@ describe("Button Component", () => {
 
   test("has the correct styles when disabled", () => {
     render(
-      <Button onClick={() => {}} disabled>
+      <Button onClick={() => {}} loading={false} disabled>
         Disabled Button
       </Button>
     );
